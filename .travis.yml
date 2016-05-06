@@ -1,2 +1,9 @@
 language: node_js
 node_js: 6
+before_script:
+  - pushd node_modules
+  - git clone https://github.com/TheSavior/babel-plugin-rewire.git
+  - cd babel-plugin-rewire
+  - git checkout ignored-identifiers
+  - npm install
+  - popd
