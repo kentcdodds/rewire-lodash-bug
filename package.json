@@ -12,13 +12,24 @@
     "npm-run-all": "1.8.0",
     "rimraf": "2.5.2"
   },
+  "engines": {
+    "node": ">=4",
+    "npm": "^3"
+  },
   "scripts": {
-    "dist": "rimraf dist && mkdir dist",
-    "lodash": "cross-env BABEL_ENV=lodash babel index.js -o dist/lodash.js",
-    "rewire": "cross-env BABEL_ENV=rewire babel index.js -o dist/rewire.js",
-    "both": "cross-env BABEL_ENV=both babel index.js -o dist/both.js",
-    "neither": "babel index.js -o dist/neither.js",
-    "all": "npm-run-all dist --parallel lodash rewire both neither"
+    "clean-dist": "rimraf dist && mkdir dist",
+
+    "build": "npm-run-all clean-dist --parallel build:*",
+    "build:lodash": "cross-env BABEL_ENV=lodash babel index.js -o dist/lodash.js",
+    "build:rewire": "cross-env BABEL_ENV=rewire babel index.js -o dist/rewire.js",
+    "build:both": "cross-env BABEL_ENV=both babel index.js -o dist/both.js",
+    "build:neither": "babel index.js -o dist/neither.js",
+
+    "test": "npm-run-all --parallel test:*",
+    "test:lodash": "cross-env BABEL_ENV=lodash babel-node test.js",
+    "test:rewire": "cross-env BABEL_ENV=rewire babel-node test.js",
+    "test:both": "cross-env BABEL_ENV=both babel-node test.js",
+    "test:neither": "babel-node test.js"
   },
   "keywords": [],
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
