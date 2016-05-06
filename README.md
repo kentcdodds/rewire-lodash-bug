@@ -1,5 +1,7 @@
 # rewire-lodash-bug
 
+[![Build Status][build-badge]][build]
+
 This is an example of the issue with combining the [lodash](http://npm.im/babel-plugin-lodash) and
 [rewire](http://npm.im/babel-plugin-rewire) babel plugins.
 
@@ -26,3 +28,6 @@ This project is set up with tests for all combinations as well. If we could get 
 
 This project also has a [travis build](https://travis-ci.org/kentcdodds/rewire-lodash-bug), so you can file a pull
 request and we'll be able to see if the bug is fixed. Thanks!
+
+[build-badge]: https://img.shields.io/travis/kentcdodds/rewire-lodash-bug.svg?style=flat-square
+[build]: https://travis-ci.org/kentcdodds/rewire-lodash-bug
