@@ -1,0 +1,49 @@
+{
+  "name": "rewire-lodash-bug",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "babel-cli": "6.8.0",
+    "babel-plugin-lodash": "3.1.0",
+    "babel-plugin-rewire": "1.0.0-rc-2",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.8.0",
+    "cross-env": "1.0.7",
+    "npm-run-all": "1.8.0",
+    "rimraf": "2.5.2"
+  },
+  "scripts": {
+    "dist": "rimraf dist && mkdir dist",
+    "lodash": "cross-env BABEL_ENV=lodash babel index.js -o dist/lodash.js",
+    "rewire": "cross-env BABEL_ENV=rewire babel index.js -o dist/rewire.js",
+    "both": "cross-env BABEL_ENV=both babel index.js -o dist/both.js",
+    "neither": "babel index.js -o dist/neither.js",
+    "all": "npm-run-all dist --parallel lodash rewire both neither"
+  },
+  "keywords": [],
+  "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
+  "license": "MIT",
+  "babel": {
+    "plugins": [
+      "transform-es2015-modules-commonjs"
+    ],
+    "env": {
+      "lodash": {
+        "plugins": [
+          "lodash"
+        ]
+      },
+      "rewire": {
+        "plugins": [
+          "rewire"
+        ]
+      },
+      "both": {
+        "plugins": [
+          "rewire",
+          "lodash"
+        ]
+      }
+    }
+  }
+}
